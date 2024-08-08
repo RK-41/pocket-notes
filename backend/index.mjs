@@ -14,10 +14,12 @@ mongoose
 
 // Express App
 const app = express();
+const port = process.env.PORT || 8000;
+
 app.use(express.json());
 app.use(
 	cors({
-		origin: 'http://localhost:5173',
+		origin: `${process.env.FRONTEND_URL}`,
 	})
 );
 app.use('/api', groupRoutes);
@@ -29,8 +31,8 @@ app.get('/', (req, res) => {
 
 app.post('/add-note', async (req, res) => {});
 
-app.listen(8000, () => {
-	console.log('Server is running on port 8000');
+app.listen(port, () => {
+	console.log(`Server is running on port ${port}`);
 });
 
 export default app;
