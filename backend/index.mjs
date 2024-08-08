@@ -21,7 +21,11 @@ app.use(
 	cors({
 		origin: `${process.env.FRONTEND_URL}`,
 		methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed methods
-		allowedHeaders: ['Content-Type', 'Authorization'], // Allowed headers
+		allowedHeaders: [
+			'Content-Type',
+			'Authorization',
+			'Access-Control-Allow-Origin',
+		], // Allowed headers
 	})
 );
 app.use('/api', groupRoutes);
