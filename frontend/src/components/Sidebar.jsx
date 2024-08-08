@@ -16,9 +16,12 @@ function Sidebar({ groups, setGroups, setActiveGroup, handleActiveGroup }) {
 	// FETCH GROUPS
 	const fetchGroups = useCallback(async () => {
 		try {
-			const response = await axios.get('http://localhost:8000/api/groups'); // Adjust URL if necessary
+			const response = await axios.get(
+				`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/groups`
+			);
+
 			console.log('Fetched groups:', response.data);
-			// Use the fetched groups (e.g., set state in React)
+
 			setGroups(() => response.data);
 			// setNotes(response.data.notes);
 			console.log('notes:', response.data.notes);
@@ -50,7 +53,7 @@ function Sidebar({ groups, setGroups, setActiveGroup, handleActiveGroup }) {
 
 			try {
 				const response = await axios.post(
-					'http://localhost:8000/api/groups',
+					`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/groups`,
 					newGr
 				);
 				console.log('Group Added.', response);

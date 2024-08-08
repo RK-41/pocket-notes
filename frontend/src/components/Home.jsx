@@ -30,11 +30,14 @@ function Home() {
 		setActiveGroup(gr);
 	};
 
+	// FETCH NOTES
 	const fetchNotes = useCallback(async (groupId) => {
 		setLoading(true);
 		try {
 			const response = await axios.get(
-				`http://localhost:8000/api/groups/${groupId}/notes`
+				`${
+					import.meta.env.VITE_REACT_APP_BACKEND_BASEURL
+				}/api/groups/${groupId}/notes`
 			);
 			setActiveGroup((prevGroup) => ({
 				...prevGroup,
@@ -47,10 +50,13 @@ function Home() {
 		}
 	}, []);
 
+	// ADD NOTES
 	const addNoteToGroup = useCallback(async ({ id, text, createdAt }) => {
 		try {
 			const response = await axios.post(
-				`http://localhost:8000/api/groups/${id}/notes`,
+				`${
+					import.meta.env.VITE_REACT_APP_BACKEND_BASEURL
+				}/api/groups/${id}/notes`,
 				{ text, createdAt }
 			);
 			setActiveGroup((prevGroup) => ({
