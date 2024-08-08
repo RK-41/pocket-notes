@@ -20,6 +20,8 @@ app.use(express.json());
 app.use(
 	cors({
 		origin: `${process.env.FRONTEND_URL}`,
+		methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed methods
+		allowedHeaders: ['Content-Type', 'Authorization'], // Allowed headers
 	})
 );
 app.use('/api', groupRoutes);
