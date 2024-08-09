@@ -8,84 +8,84 @@ function Home() {
 			id: '1',
 			name: 'dummy group',
 			initials: 'DG',
-			bg: '#aaaaaa',
+			bg: '#fef',
 			notes: [{ text: 'notes notes...', createdAt: '3 Aug 2024 7:37 PM' }],
 		},
 		{
 			id: '1',
 			name: 'dummy group',
 			initials: 'DG',
-			bg: '#aaaaaa',
+			bg: '#fef',
 			notes: [{ text: 'notes notes...', createdAt: '3 Aug 2024 7:37 PM' }],
 		},
 		{
 			id: '1',
 			name: 'dummy group',
 			initials: 'DG',
-			bg: '#aaaaaa',
+			bg: '#fef',
 			notes: [{ text: 'notes notes...', createdAt: '3 Aug 2024 7:37 PM' }],
 		},
 		{
 			id: '1',
 			name: 'dummy group',
 			initials: 'DG',
-			bg: '#aaaaaa',
+			bg: '#fef',
 			notes: [{ text: 'notes notes...', createdAt: '3 Aug 2024 7:37 PM' }],
 		},
 		{
 			id: '1',
 			name: 'dummy group',
 			initials: 'DG',
-			bg: '#aaaaaa',
+			bg: '#fef',
 			notes: [{ text: 'notes notes...', createdAt: '3 Aug 2024 7:37 PM' }],
 		},
 		{
 			id: '1',
 			name: 'dummy group',
 			initials: 'DG',
-			bg: '#aaaaaa',
+			bg: '#fef',
 			notes: [{ text: 'notes notes...', createdAt: '3 Aug 2024 7:37 PM' }],
 		},
 		{
 			id: '1',
 			name: 'dummy group',
 			initials: 'DG',
-			bg: '#aaaaaa',
+			bg: '#fef',
 			notes: [{ text: 'notes notes...', createdAt: '3 Aug 2024 7:37 PM' }],
 		},
 		{
 			id: '1',
 			name: 'dummy group',
 			initials: 'DG',
-			bg: '#aaaaaa',
+			bg: '#fef',
 			notes: [{ text: 'notes notes...', createdAt: '3 Aug 2024 7:37 PM' }],
 		},
 		{
 			id: '1',
 			name: 'dummy group',
 			initials: 'DG',
-			bg: '#aaaaaa',
+			bg: '#fef',
 			notes: [{ text: 'notes notes...', createdAt: '3 Aug 2024 7:37 PM' }],
 		},
 		{
 			id: '1',
 			name: 'dummy group',
 			initials: 'DG',
-			bg: '#aaaaaa',
+			bg: '#fef',
 			notes: [{ text: 'notes notes...', createdAt: '3 Aug 2024 7:37 PM' }],
 		},
 		{
 			id: '1',
 			name: 'dummy group',
 			initials: 'DG',
-			bg: '#aaaaaa',
+			bg: '#fef',
 			notes: [{ text: 'notes notes...', createdAt: '3 Aug 2024 7:37 PM' }],
 		},
 		{
 			id: '1',
 			name: 'dummy group',
 			initials: 'DG',
-			bg: '#aaaaaa',
+			bg: '#fef',
 			notes: [{ text: 'notes notes...', createdAt: '3 Aug 2024 7:37 PM' }],
 		},
 	]);
@@ -203,7 +203,7 @@ function Home() {
 							<header className='notes-area-header'>
 								<div
 									className='group-initial'
-									style={{ backgroundColor: activeGroup.bg }}
+									style={{ backgroundColor: activeGroup.bg, color: '#000' }}
 								>
 									{activeGroup.initials}
 								</div>
@@ -243,7 +243,7 @@ function Home() {
 							disabled={newText.length === 0}
 							className='submit-btn'
 						>
-							Create
+							Create Note
 						</button>
 					</form>
 				</section>
