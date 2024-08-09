@@ -232,6 +232,7 @@ function Home() {
 						<textarea
 							name='new-note'
 							id='new-note'
+							placeholder='Once upon a time...'
 							value={newText}
 							onChange={(e) => setNewText(e.target.value)}
 							required
