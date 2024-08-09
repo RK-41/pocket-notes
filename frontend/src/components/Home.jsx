@@ -252,7 +252,7 @@ function Home() {
 									<p>Loading notes...</p>
 								) : (
 									activeGroup.notes &&
-									activeGroup.notes.map((note, index) => (
+									activeGroup.notes.toReversed().map((note, index) => (
 										<div key={index} className='notes'>
 											<p className='notes-text'>{note.text}</p>
 											<p className='creation-date'>{note.createdAt}</p>
