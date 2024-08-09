@@ -103,55 +103,6 @@ function Home() {
 		setNewText('');
 	};
 
-	const handleActiveGroup = (gr) => {
-		setActiveGroup(gr);
-	};
-
-	// FETCH NOTES
-	const fetchNotes = useCallback(async (groupId) => {
-		setLoading(true);
-		try {
-			const response = await axios.get(
-				`${
-					import.meta.env.VITE_REACT_APP_BACKEND_BASEURL
-				}/api/groups/${groupId}/notes`
-			);
-			setActiveGroup((prevGroup) => ({
-				...prevGroup,
-				notes: response.data,
-			}));
-		} catch (error) {
-			console.error('Error fetching notes:', error);
-		} finally {
-			setLoading(false);
-		}
-	}, []);
-
-	// ADD NOTES
-	const addNoteToGroup = useCallback(async ({ id, text, createdAt }) => {
-		try {
-			const response = await axios.post(
-				`${
-					import.meta.env.VITE_REACT_APP_BACKEND_BASEURL
-				}/api/groups/${id}/notes`,
-				{ text, createdAt }
-			);
-			setActiveGroup((prevGroup) => ({
-				...prevGroup,
-				notes: response.data.notes,
-			}));
-		} catch (error) {
-			console.error('Error adding note:', error);
-		}
-	}, []);
-
-	useEffect(() => {
-		console.log(activeGroup);
-		if (activeGroup) fetchNotes(activeGroup._id);
-	}, [fetchNotes]);
-
-	useEffect(() => {}, [addNoteToGroup]);
-
 	const formatDate = () => {
 		const timestamp = Date.now();
 		const date = new Date(timestamp);
@@ -178,10 +129,62 @@ function Home() {
 		const ampm = hours >= 12 ? 'PM' : 'AM';
 		hours = hours % 12 || 12;
 
-		const formattedDate = `${day} ${month} ${year} ${hours}:${minutes} ${ampm}`;
-		console.log(formattedDate);
+		const formattedDate = `${day} ${month} ${year} • ${hours}:${minutes} ${ampm}`;
+		// console.log(formattedDate);
 		return formattedDate;
 	};
+
+	const handleActiveGroup = (gr) => {
+		setActiveGroup(gr);
+	};
+
+	// FETCH NOTES
+	const fetchNotes = useCallback(async (groupId) => {
+		setLoading(true);
+		try {
+			const response = await axios.get(
+				`${
+					import.meta.env.VITE_REACT_APP_BACKEND_BASEURL
+				}/api/groups/${groupId}/notes`
+			);
+			setActiveGroup((prevGroup) => ({
+				...prevGroup,
+				notes: response.data,
+			}));
+
+			console.log('notes:', response.data);
+		} catch (error) {
+			console.error('Error fetching notes:', error);
+		} finally {
+			setLoading(false);
+		}
+	}, []);
+
+	// ADD NOTES
+	const addNoteToGroup = useCallback(async ({ id, text, createdAt }) => {
+		try {
+			const response = await axios.post(
+				`${
+					import.meta.env.VITE_REACT_APP_BACKEND_BASEURL
+				}/api/groups/${id}/notes`,
+				{ text, createdAt }
+			);
+			setActiveGroup((prevGroup) => ({
+				...prevGroup,
+				notes: response.data.notes,
+			}));
+		} catch (error) {
+			console.error('Error adding note:', error);
+		}
+	}, []);
+
+	// USE EFFECTS
+	useEffect(() => {
+		console.log(activeGroup);
+		if (activeGroup) fetchNotes(activeGroup._id);
+	}, [fetchNotes]);
+
+	useEffect(() => {}, [activeGroup, addNoteToGroup]);
 
 	return (
 		<div className='home'>
@@ -193,35 +196,38 @@ function Home() {
 					handleActiveGroup={handleActiveGroup}
 				/>
 			</div>
+
 			<main className='main'>
 				{/* NOTES SECTION */}
-				<section className='notes-area'>
+				<section className='notes-section'>
 					{!activeGroup ? (
-						<div>Group not selected</div>
+						<div className='message'>Select a group!</div>
 					) : (
-						<div>
+						<div className='notes-area'>
 							<header className='notes-area-header'>
 								<div
-									className='group-initial'
-									style={{ backgroundColor: activeGroup.bg, color: '#000' }}
+									className='group-initials'
+									style={{ backgroundColor: activeGroup.bg }}
 								>
 									{activeGroup.initials}
 								</div>
-								<h2>{activeGroup.name}</h2>
+								<h2 className='group-name'>{activeGroup.name}</h2>
 							</header>
-							{loading ? (
-								<p>Loading notes...</p>
-							) : (
-								activeGroup.notes &&
-								activeGroup.notes.map((note, index) => (
-									<div key={index}>
-										<p>{note.text}</p>
-										<p>{note.createdAt}</p>
-										<br />
-									</div>
-								))
-							)}
-							<hr />
+
+							<div className='notes-container'>
+								{loading ? (
+									<p>Loading notes...</p>
+								) : (
+									activeGroup.notes &&
+									activeGroup.notes.map((note, index) => (
+										<div key={index} className='notes'>
+											<p className='notes-text'>{note.text}</p>
+											<p className='creation-date'>{note.createdAt}</p>
+											<hr />
+										</div>
+									))
+								)}
+							</div>
 						</div>
 					)}
 				</section>

@@ -20,11 +20,13 @@ function Sidebar({ groups, setGroups, setActiveGroup, handleActiveGroup }) {
 				`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/groups`
 			);
 
-			console.log('Fetched groups:', response.data);
-
-			setGroups(() => response.data);
-			// setNotes(response.data.notes);
-			console.log('notes:', response.data.notes);
+			if (response.statusText === 'OK') {
+				handleActiveGroup(null);
+				setGroups(() => response.data);
+				console.log('Fetched groups:', response.data);
+			} else {
+				console.log('Trying to fetch groups failed: ', response);
+			}
 		} catch (error) {
 			console.error('Error fetching groups:', error);
 		}
@@ -74,7 +76,7 @@ function Sidebar({ groups, setGroups, setActiveGroup, handleActiveGroup }) {
 		<div style={{ backgroundColor: bg }}>
 			<h1 className='sidebar-heading'>Pocket Notes</h1>
 
-			<div className='groups'>
+			<div className='groups-container'>
 				<ul>
 					{groups &&
 						groups.map((group, index) => (
@@ -82,13 +84,12 @@ function Sidebar({ groups, setGroups, setActiveGroup, handleActiveGroup }) {
 								key={index}
 								className='group'
 								onClick={() => {
-									// setBg(group.bg);
 									// setActiveGroup(group);
 									handleActiveGroup(group);
 								}}
 							>
 								<div
-									className='group-initial'
+									className='group-initials'
 									style={{ backgroundColor: group.bg }}
 								>
 									{group.initials}

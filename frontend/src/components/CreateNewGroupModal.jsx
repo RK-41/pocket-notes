@@ -3,7 +3,7 @@ import { useState } from 'react';
 
 function CreateNewGroupModal({ handleModalClose, createNewGroup }) {
 	const [groupName, setGroupName] = useState('');
-	const [groupColor, setGroupColor] = useState('');
+	const [groupColor, setGroupColor] = useState('#fff');
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
@@ -20,66 +20,39 @@ function CreateNewGroupModal({ handleModalClose, createNewGroup }) {
 			}}
 		>
 			<div className='modal' id='create-group-modal'>
-				<h1>Create New Group</h1>
-				<form onSubmit={handleSubmit}>
-					<label htmlFor='group-name'>Group Name</label>
-					<input
-						type='text'
-						name='group-name'
-						id='group-name'
-						value={groupName}
-						onChange={(e) => setGroupName(e.target.value)}
-						required
-					/>
+				<h1 className='modal-heading'>Create New Group</h1>
 
-					<h3>Group Color</h3>
-					<button
-						type='button'
-						onClick={() => setGroupColor('#ffffff')}
-						className='group-color-btn'
-						id='color-0'
-					></button>
-					<button
-						type='button'
-						onClick={() => setGroupColor('#ff1122')}
-						className='group-color-btn'
-						id='color-1'
-					></button>
-					<button
-						type='button'
-						onClick={() => setGroupColor('#ffff22')}
-						className='group-color-btn'
-						id='color-2'
-					></button>
-					<button
-						type='button'
-						onClick={() => setGroupColor('#00aa22')}
-						className='group-color-btn'
-						id='color-3'
-					></button>
-					<button
-						type='button'
-						onClick={() => setGroupColor('#00aaff')}
-						className='group-color-btn'
-						id='color-4'
-					></button>
+				<form onSubmit={handleSubmit} className='modal-form'>
+					<div className='form-inputs'>
+						<label htmlFor='group-name'>Group Name</label>
+						<input
+							type='text'
+							name='group-name'
+							id='group-name'
+							value={groupName}
+							onChange={(e) => setGroupName(e.target.value)}
+							required
+						/>
 
-					<button type='submit'>Create</button>
+						<label htmlFor='color-picker'>Group Color</label>
+						<input
+							type='color'
+							id='color-picker'
+							name='color-picker'
+							value={groupColor}
+							onChange={(e) => setGroupColor(e.target.value)}
+							className='color-picker-input'
+						/>
+					</div>
+
+					<button type='submit' className='create-group-btn'>
+						Create
+					</button>
 				</form>
 
-				<p>Group Name: {groupName}</p>
-				<div>
-					Color: {groupColor}{' '}
-					<p
-						style={{
-							backgroundColor: groupColor,
-							width: '100px',
-							height: '30px',
-						}}
-					></p>
-				</div>
-
-				<button onClick={() => handleModalClose()}>Close</button>
+				<button onClick={() => handleModalClose()} className='close-btn'>
+					X
+				</button>
 			</div>
 		</div>
 	);
