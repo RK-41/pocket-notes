@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useState, useEffect, useCallback } from 'react';
 import Sidebar from './Sidebar';
 import axios from 'axios';
@@ -92,6 +93,12 @@ function Home() {
 	const [activeGroup, setActiveGroup] = useState(null);
 	const [newText, setNewText] = useState('');
 	const [loading, setLoading] = useState(false);
+	const [sidebarOpen, setSidebarOpen] = useState(true);
+
+	// useEffect(() => {
+	// 	if (window.innerWidth <= 576) setSidebarOpen(false);
+	// 	else setSidebarOpen(true);
+	// }, [window.innerWidth]);
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
@@ -186,15 +193,38 @@ function Home() {
 
 	useEffect(() => {}, [activeGroup, addNoteToGroup]);
 
+	useEffect(() => {
+		if (window.innerWidth <= 576) setSidebarOpen(false);
+	}, []);
+
 	return (
 		<div className='home'>
 			<div className='sidebar-container'>
-				<Sidebar
-					groups={groups}
-					setGroups={setGroups}
-					setActiveGroup={setActiveGroup}
-					handleActiveGroup={handleActiveGroup}
-				/>
+				<header className='header'>
+					<h1 className='heading'>Pocket Notes</h1>
+					<button
+						className='sidebar-toggle-btn'
+						onClick={() => setSidebarOpen((curr) => !curr)}
+					>
+						{sidebarOpen ? 'X' : '='}
+					</button>
+				</header>
+
+				{sidebarOpen && (
+					<section
+						className={
+							sidebarOpen ? 'sidebar-section open' : 'sidebar-section closed'
+						}
+					>
+						<Sidebar
+							groups={groups}
+							setGroups={setGroups}
+							setActiveGroup={setActiveGroup}
+							handleActiveGroup={handleActiveGroup}
+							setSidebarOpen={setSidebarOpen}
+						/>
+					</section>
+				)}
 			</div>
 
 			<main className='main'>

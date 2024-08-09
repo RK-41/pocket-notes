@@ -7,30 +7,64 @@
 .home {
 	width: 100%;
 	height: 100vh;
-	/* background-color: white; */
 	display: flex;
+	flex-direction: row;
 }
 
-/* SIDEBAR & GROUPS*/
+.header {
+	width: 100%;
+	/* height: 15vh; */
+	height: 50px;
+	position: relative;
+	background-color: #00ffff;
+}
 
+.heading {
+	text-align: center;
+	margin: 0 5px;
+	padding: 5px 0;
+}
+
+.sidebar-toggle-btn {
+	width: 30px;
+	height: 30px;
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	padding: 5px;
+	background-color: #00ffff;
+	cursor: pointer;
+	display: none;
+}
+
+/* SIDEBAR & GROUPS */
 .sidebar-container {
 	width: 430px;
 	height: 100vh;
 	border-right: 1px solid #000000;
-	/* background-color: blanchedalmond; */
 }
 
-.sidebar-heading {
+.sidebar-section {
 	width: 100%;
-	height: 15vh;
-	padding: 10px 0;
-	text-align: center;
-	background-color: #00ffff;
+	height: calc(100vh - 50px);
+}
+
+/* .open {
+	display: block;
+}
+
+.close {
+	display: none;
+} */
+
+.sidebar {
+	width: 100%;
+	height: 100%;
 }
 
 .groups-container {
 	width: 100%;
-	height: calc(85vh - 40px);
+	height: calc(100% - 40px);
 	overflow: auto;
 	scroll-behavior: smooth;
 }
@@ -64,6 +98,7 @@
 	height: 50px;
 	line-height: 50px;
 	text-align: center;
+	font-size: 20px;
 	background-color: transparent;
 	border: none;
 }
@@ -79,7 +114,6 @@
 }
 
 /* NOTES SECTION */
-
 .notes-section {
 	width: 100%;
 	height: 70vh;
@@ -122,7 +156,6 @@
 }
 
 /* CREATE NOTE SECTION */
-
 .create-note {
 	width: 100%;
 	height: 30vh;
@@ -174,7 +207,6 @@ button {
 	background-color: #ffffff;
 	position: relative;
 	border: 1px solid #000000;
-	/* z-index: 1; */
 }
 
 .modal-heading {
@@ -221,4 +253,59 @@ button {
 	padding: 5px;
 	background-color: #00ffff;
 	cursor: pointer;
+}
+
+/* Responsive Styles */
+@media (max-width: 1200px) {
+	.sidebar-container {
+		width: 350px;
+	}
+}
+
+@media (max-width: 992px) {
+	.sidebar-container {
+		/* height: auto; */
+		border-bottom: 1px solid #000000;
+	}
+}
+
+@media (max-width: 768px) {
+	.group-name {
+		font-size: 18px;
+	}
+}
+
+@media (max-width: 576px) {
+	.home {
+		flex-direction: column;
+	}
+	.main {
+		height: auto;
+	}
+	.heading {
+		font-size: 24px;
+		line-height: 40px;
+	}
+	.sidebar-toggle-btn {
+		display: block;
+	}
+	.sidebar-container {
+		width: 100%;
+		/* height: 100vh; */
+	}
+	.sidebar {
+		/* display: none; */
+		visibility: visible;
+	}
+	.group-initials {
+		width: 30px;
+		height: 30px;
+	}
+	.notes-section {
+		height: calc(70vh - 51px);
+	}
+	.notes {
+		font-size: 14px;
+		line-height: 2ch;
+	}
 }

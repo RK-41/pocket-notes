@@ -5,7 +5,7 @@ import { createPortal } from 'react-dom';
 import CreateNewGroupModal from './CreateNewGroupModal';
 import axios from 'axios';
 
-function Sidebar({ groups, setGroups, setActiveGroup, handleActiveGroup }) {
+function Sidebar({ groups, setGroups, handleActiveGroup, setSidebarOpen }) {
 	const [bg, setBg] = useState('');
 	const [modalOpen, setModalOpen] = useState(false);
 
@@ -69,9 +69,7 @@ function Sidebar({ groups, setGroups, setActiveGroup, handleActiveGroup }) {
 	}, []);
 
 	return (
-		<div style={{ backgroundColor: bg }}>
-			<h1 className='sidebar-heading'>Pocket Notes</h1>
-
+		<div style={{ backgroundColor: bg }} className='sidebar'>
 			<div className='groups-container'>
 				<ul>
 					{groups &&
@@ -80,8 +78,8 @@ function Sidebar({ groups, setGroups, setActiveGroup, handleActiveGroup }) {
 								key={index}
 								className='group'
 								onClick={() => {
-									// setActiveGroup(group);
 									handleActiveGroup(group);
+									if (window.innerWidth <= 576) setSidebarOpen(false);
 								}}
 							>
 								<div
