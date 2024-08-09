@@ -16,7 +16,7 @@
 .sidebar-container {
 	width: 430px;
 	height: 100vh;
-	border-right: 1px solid #000;
+	border-right: 1px solid #000000;
 	/* background-color: blanchedalmond; */
 }
 
@@ -55,7 +55,7 @@
 	border: 1px black solid;
 	border-radius: 50%;
 	font-weight: bold;
-	color: #000;
+	color: #000000;
 	background-color: #ffffff;
 }
 
@@ -153,8 +153,8 @@ button {
 .submit-btn {
 	width: 100%;
 	border: none;
-	border-top: 1px solid #000;
-	border-bottom: 1px solid #000;
+	border-top: 1px solid #000000;
+	border-bottom: 1px solid #000000;
 }
 
 .modal-container {
@@ -173,7 +173,7 @@ button {
 	height: 300px;
 	background-color: #ffffff;
 	position: relative;
-	border: 1px solid #000;
+	border: 1px solid #000000;
 	/* z-index: 1; */
 }
 
@@ -208,6 +208,10 @@ button {
 	padding: 0 5px;
 }
 
+#color-picker {
+	background-color: #000000;
+}
+
 .close-btn {
 	width: 30px;
 	height: 30px;
@@ -216,8 +220,5 @@ button {
 	right: 10px;
 	padding: 5px;
 	background-color: #00ffff;
-	/* color: white; */
-	/* border: none; */
-	/* border-radius: 5px; */
 	cursor: pointer;
 }

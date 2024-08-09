@@ -3,7 +3,7 @@ import { useState } from 'react';
 
 function CreateNewGroupModal({ handleModalClose, createNewGroup }) {
 	const [groupName, setGroupName] = useState('');
-	const [groupColor, setGroupColor] = useState('#fff');
+	const [groupColor, setGroupColor] = useState('#ffffff');
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
