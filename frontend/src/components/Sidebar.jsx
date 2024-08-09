@@ -74,31 +74,33 @@ function Sidebar({ groups, setGroups, setActiveGroup, handleActiveGroup }) {
 		<div style={{ backgroundColor: bg }}>
 			<h1 className='sidebar-heading'>Pocket Notes</h1>
 
-			<ul>
-				{groups &&
-					groups.map((group, index) => (
-						<li
-							key={index}
-							className='group'
-							onClick={() => {
-								// setBg(group.bg);
-								// setActiveGroup(group);
-								handleActiveGroup(group);
-							}}
-						>
-							<div
-								className='group-initial'
-								style={{ backgroundColor: group.bg }}
+			<div className='groups'>
+				<ul>
+					{groups &&
+						groups.map((group, index) => (
+							<li
+								key={index}
+								className='group'
+								onClick={() => {
+									// setBg(group.bg);
+									// setActiveGroup(group);
+									handleActiveGroup(group);
+								}}
 							>
-								{group.initials}
-							</div>
-							<p className='group-name'>{group.name}</p>
-						</li>
-					))}
-			</ul>
+								<div
+									className='group-initial'
+									style={{ backgroundColor: group.bg }}
+								>
+									{group.initials}
+								</div>
+								<p className='group-name'>{group.name}</p>
+							</li>
+						))}
+				</ul>
+			</div>
 
 			<button onClick={() => setModalOpen(true)} className='create-group-btn'>
-				Create Gr
+				Create Group
 			</button>
 
 			{modalOpen &&

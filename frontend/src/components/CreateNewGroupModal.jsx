@@ -35,6 +35,12 @@ function CreateNewGroupModal({ handleModalClose, createNewGroup }) {
 					<h3>Group Color</h3>
 					<button
 						type='button'
+						onClick={() => setGroupColor('#ffffff')}
+						className='group-color-btn'
+						id='color-0'
+					></button>
+					<button
+						type='button'
 						onClick={() => setGroupColor('#ff1122')}
 						className='group-color-btn'
 						id='color-1'

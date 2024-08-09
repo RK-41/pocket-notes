@@ -11,6 +11,83 @@ function Home() {
 			bg: '#aaaaaa',
 			notes: [{ text: 'notes notes...', createdAt: '3 Aug 2024 7:37 PM' }],
 		},
+		{
+			id: '1',
+			name: 'dummy group',
+			initials: 'DG',
+			bg: '#aaaaaa',
+			notes: [{ text: 'notes notes...', createdAt: '3 Aug 2024 7:37 PM' }],
+		},
+		{
+			id: '1',
+			name: 'dummy group',
+			initials: 'DG',
+			bg: '#aaaaaa',
+			notes: [{ text: 'notes notes...', createdAt: '3 Aug 2024 7:37 PM' }],
+		},
+		{
+			id: '1',
+			name: 'dummy group',
+			initials: 'DG',
+			bg: '#aaaaaa',
+			notes: [{ text: 'notes notes...', createdAt: '3 Aug 2024 7:37 PM' }],
+		},
+		{
+			id: '1',
+			name: 'dummy group',
+			initials: 'DG',
+			bg: '#aaaaaa',
+			notes: [{ text: 'notes notes...', createdAt: '3 Aug 2024 7:37 PM' }],
+		},
+		{
+			id: '1',
+			name: 'dummy group',
+			initials: 'DG',
+			bg: '#aaaaaa',
+			notes: [{ text: 'notes notes...', createdAt: '3 Aug 2024 7:37 PM' }],
+		},
+		{
+			id: '1',
+			name: 'dummy group',
+			initials: 'DG',
+			bg: '#aaaaaa',
+			notes: [{ text: 'notes notes...', createdAt: '3 Aug 2024 7:37 PM' }],
+		},
+		{
+			id: '1',
+			name: 'dummy group',
+			initials: 'DG',
+			bg: '#aaaaaa',
+			notes: [{ text: 'notes notes...', createdAt: '3 Aug 2024 7:37 PM' }],
+		},
+		{
+			id: '1',
+			name: 'dummy group',
+			initials: 'DG',
+			bg: '#aaaaaa',
+			notes: [{ text: 'notes notes...', createdAt: '3 Aug 2024 7:37 PM' }],
+		},
+		{
+			id: '1',
+			name: 'dummy group',
+			initials: 'DG',
+			bg: '#aaaaaa',
+			notes: [{ text: 'notes notes...', createdAt: '3 Aug 2024 7:37 PM' }],
+		},
+		{
+			id: '1',
+			name: 'dummy group',
+			initials: 'DG',
+			bg: '#aaaaaa',
+			notes: [{ text: 'notes notes...', createdAt: '3 Aug 2024 7:37 PM' }],
+		},
+		{
+			id: '1',
+			name: 'dummy group',
+			initials: 'DG',
+			bg: '#aaaaaa',
+			notes: [{ text: 'notes notes...', createdAt: '3 Aug 2024 7:37 PM' }],
+		},
 	]);
 	const [activeGroup, setActiveGroup] = useState(null);
 	const [newText, setNewText] = useState('');
@@ -108,7 +185,7 @@ function Home() {
 
 	return (
 		<div className='home'>
-			<div className='sidebar'>
+			<div className='sidebar-container'>
 				<Sidebar
 					groups={groups}
 					setGroups={setGroups}
@@ -120,7 +197,7 @@ function Home() {
 				{/* NOTES SECTION */}
 				<section className='notes-area'>
 					{!activeGroup ? (
-						<div>Not selected</div>
+						<div>Group not selected</div>
 					) : (
 						<div>
 							<header className='notes-area-header'>
@@ -151,15 +228,20 @@ function Home() {
 
 				{/* CREATE NOTE SECTION */}
 				<section className='create-note'>
-					<form onSubmit={handleSubmit}>
+					<form onSubmit={handleSubmit} className='create-note-form'>
 						<textarea
 							name='new-note'
 							id='new-note'
 							value={newText}
 							onChange={(e) => setNewText(e.target.value)}
 							required
+							disabled={!activeGroup}
 						></textarea>
-						<button type='submit' disabled={newText.length === 0}>
+						<button
+							type='submit'
+							disabled={newText.length === 0}
+							className='submit-btn'
+						>
 							Create
 						</button>
 					</form>
