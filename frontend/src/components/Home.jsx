@@ -95,11 +95,6 @@ function Home() {
 	const [loading, setLoading] = useState(false);
 	const [sidebarOpen, setSidebarOpen] = useState(true);
 
-	// useEffect(() => {
-	// 	if (window.innerWidth <= 576) setSidebarOpen(false);
-	// 	else setSidebarOpen(true);
-	// }, [window.innerWidth]);
-
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		addNoteToGroup({
@@ -210,28 +205,36 @@ function Home() {
 					</button>
 				</header>
 
-				{sidebarOpen && (
-					<section
-						className={
-							sidebarOpen ? 'sidebar-section open' : 'sidebar-section closed'
-						}
-					>
-						<Sidebar
-							groups={groups}
-							setGroups={setGroups}
-							setActiveGroup={setActiveGroup}
-							handleActiveGroup={handleActiveGroup}
-							setSidebarOpen={setSidebarOpen}
-						/>
-					</section>
-				)}
+				{/* {sidebarOpen && ( */}
+				<section
+					className={
+						sidebarOpen ? 'sidebar-section open' : 'sidebar-section closed'
+					}
+				>
+					<Sidebar
+						groups={groups}
+						setGroups={setGroups}
+						setActiveGroup={setActiveGroup}
+						handleActiveGroup={handleActiveGroup}
+						sidebarOpen={sidebarOpen}
+						setSidebarOpen={setSidebarOpen}
+					/>
+				</section>
+				{/* )} */}
 			</div>
 
 			<main className='main'>
 				{/* NOTES SECTION */}
 				<section className='notes-section'>
 					{!activeGroup ? (
-						<div className='message'>Select a group!</div>
+						<div className='message'>
+							<button
+								className='message-btn'
+								onClick={() => setSidebarOpen(true)}
+							>
+								Select a group!
+							</button>
+						</div>
 					) : (
 						<div className='notes-area'>
 							<header className='notes-area-header'>

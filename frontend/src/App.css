@@ -21,6 +21,7 @@
 
 .heading {
 	text-align: center;
+	white-space: nowrap;
 	margin: 0 5px;
 	padding: 5px 0;
 }
@@ -34,12 +35,12 @@
 	padding: 5px;
 	background-color: #00ffff;
 	cursor: pointer;
-	display: none;
+	/* display: none; */
 }
 
 /* SIDEBAR & GROUPS */
 .sidebar-container {
-	width: 430px;
+	width: 300px;
 	height: 100vh;
 	border-right: 1px solid #000000;
 }
@@ -47,15 +48,16 @@
 .sidebar-section {
 	width: 100%;
 	height: calc(100vh - 50px);
+	background-color: #ffffff;
 }
 
-/* .open {
+.open {
 	display: block;
 }
 
-.close {
+.closed {
 	display: none;
-} */
+}
 
 .sidebar {
 	width: 100%;
@@ -82,7 +84,6 @@
 	width: 40px;
 	height: 40px;
 	margin: auto;
-	margin-left: 5px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -101,6 +102,10 @@
 	font-size: 20px;
 	background-color: transparent;
 	border: none;
+	padding-right: 50px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 
 .group:hover {
@@ -129,12 +134,19 @@
 	text-align: center;
 }
 
+.message-btn {
+	width: auto;
+	height: auto;
+	padding: 0 10px;
+	min-height: 40px;
+}
+
 .notes-area-header {
 	width: 100%;
 	height: 50px;
 	background-color: #00ffff;
 	display: flex;
-	gap: 10px;
+	/* gap: 10px; */
 }
 
 .notes-container {
@@ -172,7 +184,8 @@
 #new-note {
 	width: 100%;
 	height: calc(30vh - 40px);
-	resize: both;
+	/* resize: both; */
+	font-size: 20px;
 }
 
 button {
@@ -189,6 +202,8 @@ button {
 	border-top: 1px solid #000000;
 	border-bottom: 1px solid #000000;
 }
+
+/* MODAL */
 
 .modal-container {
 	width: 100%;
@@ -255,7 +270,8 @@ button {
 	cursor: pointer;
 }
 
-/* Responsive Styles */
+/* RESPONSIVE STYLES */
+
 @media (max-width: 1200px) {
 	.sidebar-container {
 		width: 350px;
@@ -267,11 +283,15 @@ button {
 		/* height: auto; */
 		border-bottom: 1px solid #000000;
 	}
+	.heading {
+		font-size: 26px;
+		line-height: 40px;
+	}
 }
 
 @media (max-width: 768px) {
 	.group-name {
-		font-size: 18px;
+		font-size: 20px;
 	}
 }
 
@@ -293,6 +313,9 @@ button {
 		width: 100%;
 		/* height: 100vh; */
 	}
+	.sidebar-section {
+		position: fixed;
+	}
 	.sidebar {
 		/* display: none; */
 		visibility: visible;
@@ -301,11 +324,21 @@ button {
 		width: 30px;
 		height: 30px;
 	}
+	.group-name {
+		font-size: 18px;
+	}
 	.notes-section {
 		height: calc(70vh - 51px);
 	}
+	.notes-container {
+		width: 100%;
+		height: calc(70vh - 100px);
+	}
 	.notes {
-		font-size: 14px;
-		line-height: 2ch;
+		font-size: 16px;
+		line-height: 2.5ch;
+	}
+	#new-note {
+		font-size: 16px;
 	}
 }
