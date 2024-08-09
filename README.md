@@ -1,3 +1,3 @@
-﻿# Pocket Notes
+# Pocket Notes
 
- [Check it out](https://pocket-notes-drab.vercel.app/)
+<a href="https://pocket-notes-drab.vercel.app/" target="_blank">Check it out</a>
