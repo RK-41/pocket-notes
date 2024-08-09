@@ -32,7 +32,7 @@ app.use('/api', groupRoutes);
 
 // API Handling
 app.get('/', (req, res) => {
-	res.json({ data: 'hey..' });
+	res.json({ data: "This is Pocket Note's Backend!" });
 });
 
 app.post('/add-note', async (req, res) => {});

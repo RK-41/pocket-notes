@@ -20,13 +20,9 @@ function Sidebar({ groups, setGroups, setActiveGroup, handleActiveGroup }) {
 				`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/groups`
 			);
 
-			if (response.statusText === 'OK') {
-				handleActiveGroup(null);
-				setGroups(() => response.data);
-				console.log('Fetched groups:', response.data);
-			} else {
-				console.log('Trying to fetch groups failed: ', response);
-			}
+			handleActiveGroup(null);
+			setGroups(() => response.data);
+			console.log('Fetched response:', response);
 		} catch (error) {
 			console.error('Error fetching groups:', error);
 		}
