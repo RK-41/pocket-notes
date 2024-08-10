@@ -5,7 +5,13 @@ import { createPortal } from 'react-dom';
 import CreateNewGroupModal from './CreateNewGroupModal';
 import axios from 'axios';
 
-function Sidebar({ groups, setGroups, handleActiveGroup, setSidebarOpen }) {
+function Sidebar({
+	groups,
+	setGroups,
+	handleActiveGroup,
+	sidebarOpen,
+	setSidebarOpen,
+}) {
 	const [bg, setBg] = useState('');
 	const [modalOpen, setModalOpen] = useState(false);
 
@@ -70,7 +76,7 @@ function Sidebar({ groups, setGroups, handleActiveGroup, setSidebarOpen }) {
 
 	return (
 		<div style={{ backgroundColor: bg }} className='sidebar'>
-			<div className='groups-container'>
+			<div className='groups-container custom-scrollbar'>
 				<ul>
 					{groups &&
 						groups.map((group, index) => (
@@ -88,14 +94,14 @@ function Sidebar({ groups, setGroups, handleActiveGroup, setSidebarOpen }) {
 								>
 									{group.initials}
 								</div>
-								<p className='group-name'>{group.name}</p>
+								{sidebarOpen && <p className='group-name'>{group.name}</p>}
 							</li>
 						))}
 				</ul>
 			</div>
 
 			<button onClick={() => setModalOpen(true)} className='create-group-btn'>
-				Create Group
+				{sidebarOpen ? 'Create Group' : '➕'}
 			</button>
 
 			{modalOpen &&

@@ -8,6 +8,8 @@ function CreateNewGroupModal({ handleModalClose, createNewGroup }) {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		createNewGroup({ groupName, groupColor });
+		e.target.reset();
+		handleModalClose();
 	};
 
 	return (
@@ -46,7 +48,7 @@ function CreateNewGroupModal({ handleModalClose, createNewGroup }) {
 					</div>
 
 					<button type='submit' className='create-group-btn'>
-						Create
+						Create Group
 					</button>
 				</form>
 

@@ -194,15 +194,19 @@ function Home() {
 
 	return (
 		<div className='home'>
-			<div className='sidebar-container'>
+			<div
+				className={
+					sidebarOpen ? 'sidebar-container open' : 'sidebar-container closed'
+				}
+			>
 				<header className='header'>
-					<h1 className='heading'>Pocket Notes</h1>
-					<button
+					<h1 className='heading'>{sidebarOpen ? 'Pocket Notes' : 'PN'}</h1>
+					{/* <button
 						className='sidebar-toggle-btn'
 						onClick={() => setSidebarOpen((curr) => !curr)}
 					>
-						{sidebarOpen ? 'X' : '='}
-					</button>
+						{sidebarOpen ? '<' : '>'}
+					</button> */}
 				</header>
 
 				{/* {sidebarOpen && ( */}
@@ -211,6 +215,12 @@ function Home() {
 						sidebarOpen ? 'sidebar-section open' : 'sidebar-section closed'
 					}
 				>
+					<button
+						className='sidebar-toggle-btn'
+						onClick={() => setSidebarOpen((curr) => !curr)}
+					>
+						{sidebarOpen ? '<' : '>'}
+					</button>
 					<Sidebar
 						groups={groups}
 						setGroups={setGroups}
@@ -247,7 +257,7 @@ function Home() {
 								<h2 className='group-name'>{activeGroup.name}</h2>
 							</header>
 
-							<div className='notes-container'>
+							<div className='notes-container custom-scrollbar'>
 								{loading ? (
 									<p>Loading notes...</p>
 								) : (
